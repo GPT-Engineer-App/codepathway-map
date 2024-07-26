@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Rocket, Moon, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useTheme } from "./theme-provider";
 
@@ -12,8 +12,8 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4">
             <NavLink to="/" className="flex items-center space-x-2">
-              <Rocket className="h-6 w-6 text-primary" />
-              <span className="sr-only">CodeLearner</span>
+              <img src="/neetcode-logo.png" alt="NeetCode" className="h-8 w-8" />
+              <span className="font-bold text-lg">NeetCode</span>
             </NavLink>
             <nav>
               <ul className="flex space-x-4">
