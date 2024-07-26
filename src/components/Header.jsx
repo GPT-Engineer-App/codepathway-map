@@ -23,7 +23,7 @@ const Header = () => {
             </nav>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="default" size="sm" className="bg-green-800 text-white hover:bg-green-700 border-none rounded-[7.2px]">
+            <Button variant="default" size="sm" className="bg-green-800 text-white hover:bg-green-700 border-none rounded-full">
               <Flame className="h-4 w-4 mr-2" /> Pro
             </Button>
             <Button
