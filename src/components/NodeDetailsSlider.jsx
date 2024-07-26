@@ -62,6 +62,13 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
 
   const completedProblems = problems.filter(p => p.status).length;
 
+  const prerequisites = [
+    { title: "Dynamic Arrays", subtitle: "Data Structures & Algorithms for Beginners" },
+    { title: "Hash Usage", subtitle: "Data Structures & Algorithms for Beginners" },
+    { title: "Hash Implementation", subtitle: "Data Structures & Algorithms for Beginners" },
+    { title: "Prefix Sums", subtitle: "Advanced Algorithms" },
+  ];
+
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-4/5 max-w-4xl sm:max-w-full bg-gray-900 text-white overflow-y-auto">
@@ -75,22 +82,16 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
           <Progress value={(completedProblems / problems.length) * 100} className="w-full bg-gray-700 mt-2" indicatorClassName="bg-blue-500" />
         </SheetHeader>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Easy</h3>
-            <p className="text-2xl font-bold">3/5</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Medium</h3>
-            <p className="text-2xl font-bold">2/3</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Hard</h3>
-            <p className="text-2xl font-bold">0/1</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <h3 className="text-lg font-semibold mb-2">Total</h3>
-            <p className="text-2xl font-bold">5/9</p>
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-4">Prerequisites</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {prerequisites.map((prereq, index) => (
+              <div key={index} className="bg-gray-800 p-4 rounded-lg">
+                <h4 className="text-md font-semibold">{prereq.title}</h4>
+                <p className="text-sm text-gray-400">{prereq.subtitle}</p>
+                <Checkbox className="mt-2" />
+              </div>
+            ))}
           </div>
         </div>
 
