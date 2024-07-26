@@ -9,7 +9,7 @@ export const NavbarAndSidebar = () => {
   const { theme } = useTheme();
 
   return (
-    <div className={`hidden border-r ${theme === 'light' ? 'bg-white' : 'bg-muted/40'} md:block`}>
+    <div className="hidden border-r bg-[#2f3136] md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <NavLink to="/" className="flex items-center gap-2 font-semibold">

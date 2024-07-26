@@ -130,18 +130,14 @@ const Roadmap = () => {
             </ReactFlow>
           </div>
         </main>
-        <aside className={`w-80 ${theme === 'light' ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'} p-6 flex flex-col`}>
+        <aside className="w-80 bg-[#2f3136] text-white p-6 flex flex-col">
           <div className="mb-6 text-center">
             <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
             <div className="flex justify-center space-x-2">
               <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white rounded-full">Algorithms</Button>
               <Button 
                 variant="ghost" 
-                className={`${
-                  theme === 'light' 
-                    ? 'text-gray-800 hover:bg-white hover:text-gray-900' 
-                    : 'text-white hover:bg-gray-800 hover:text-gray-100'
-                } rounded-full border-none`}
+                className="text-white hover:bg-gray-700 hover:text-gray-100 rounded-full border-none"
               >
                 Courses
               </Button>
