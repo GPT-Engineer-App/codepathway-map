@@ -8,7 +8,11 @@ const Index = () => {
         <div className="max-w-xl">
           <h1 className="text-6xl font-bold mb-4">NeetCode</h1>
           <p className="text-2xl mb-8">A better way to prepare for coding interviews.</p>
-          <Button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full text-lg">
+          <Button 
+            className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white transition-colors duration-300 text-xl py-3 px-8 rounded-full"
+            variant="outline"
+            size="lg"
+          >
             Get Pro
           </Button>
         </div>
