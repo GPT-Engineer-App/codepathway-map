@@ -84,9 +84,9 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
         
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-4">Prerequisites</h3>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-wrap gap-4">
             {prerequisites.map((prereq, index) => (
-              <div key={index} className="bg-gray-800 p-4 rounded-lg">
+              <div key={index} className="bg-gray-800 p-4 rounded-lg flex-1 min-w-[200px]">
                 <h4 className="text-md font-semibold">{prereq.title}</h4>
                 <p className="text-sm text-gray-400">{prereq.subtitle}</p>
                 <Checkbox className="mt-2" />
