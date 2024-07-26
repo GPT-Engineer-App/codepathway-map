@@ -43,7 +43,11 @@ const CustomEdge = ({
     <BaseEdge
       id={id}
       path={edgePath}
-      style={style}
+      style={{
+        ...style,
+        strokeWidth: 2,
+        stroke: '#ffffff',
+      }}
       markerEnd={markerEnd}
     />
   );
@@ -56,20 +60,30 @@ const edgeTypes = {
 const Index = () => {
   const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
   const [flowEdges, setEdges] = useState([
-    ...edges.map(edge => ({ ...edge, type: 'custom' })),
-    // Add a new edge to demonstrate the connection line
-    {
-      id: 'demo-edge',
-      source: '1', // ID of the source node (Arrays & Hashing)
-      target: '7', // ID of the target node (Trees)
+    ...edges.map(edge => ({ 
+      ...edge, 
       type: 'custom',
       animated: true,
-      style: { stroke: '#FF5733', strokeWidth: 5 }, // Custom style for demonstration
+      style: { stroke: '#ffffff', strokeWidth: 2 },
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        color: '#ffffff',
+        width: 20,
+        height: 20,
+      },
+    })),
+    {
+      id: 'demo-edge',
+      source: '1',
+      target: '7',
+      type: 'custom',
+      animated: true,
+      style: { stroke: '#FF5733', strokeWidth: 3 },
       markerEnd: {
         type: MarkerType.ArrowClosed,
         color: '#FF5733',
-        width: 30,
-        height: 30,
+        width: 25,
+        height: 25,
       },
     }
   ]);
@@ -97,14 +111,14 @@ const Index = () => {
             edgeTypes={edgeTypes}
             fitView
             defaultEdgeOptions={{
-              style: { stroke: '#ffffff', strokeWidth: 3 },
               type: 'custom',
               animated: true,
+              style: { stroke: '#ffffff', strokeWidth: 2 },
               markerEnd: {
                 type: MarkerType.ArrowClosed,
                 color: '#ffffff',
-                width: 25,
-                height: 25,
+                width: 20,
+                height: 20,
               },
             }}
           >
