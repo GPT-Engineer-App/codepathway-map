@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+    <div className="flex flex-col min-h-screen bg-[#202225] text-white">
       <main className="flex-grow flex items-center justify-between px-12 py-16">
         <div className="max-w-xl">
           <h1 className="text-6xl font-bold mb-4">NeetCode</h1>
