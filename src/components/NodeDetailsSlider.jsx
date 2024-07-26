@@ -57,7 +57,7 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
     if (sortConfig.key === columnName) {
       return sortConfig.direction === 'ascending' ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />;
     }
-    return null;
+    return <ChevronUp className="h-4 w-4 opacity-0 group-hover:opacity-100" />;
   };
 
   const completedProblems = problems.filter(p => p.status).length;
@@ -102,10 +102,10 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
                 <TableRow>
                   <TableHead className="text-white">Status</TableHead>
                   <TableHead className="text-white">Star</TableHead>
-                  <TableHead className="text-white cursor-pointer" onClick={() => requestSort('problem')}>
+                  <TableHead className="text-white cursor-pointer group" onClick={() => requestSort('problem')}>
                     Problem {getSortIcon('problem')}
                   </TableHead>
-                  <TableHead className="text-white cursor-pointer" onClick={() => requestSort('difficulty')}>
+                  <TableHead className="text-white cursor-pointer group" onClick={() => requestSort('difficulty')}>
                     Difficulty {getSortIcon('difficulty')}
                   </TableHead>
                   <TableHead className="text-white">Video Solution</TableHead>
@@ -114,11 +114,12 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
               </TableHeader>
               <TableBody>
                 {sortedProblems.map((problem) => (
-                  <TableRow key={problem.id} className={problem.status ? 'bg-gray-800' : ''}>
+                  <TableRow key={problem.id} className={problem.status ? 'bg-green-900' : ''}>
                     <TableCell>
                       <Checkbox
                         checked={problem.status}
                         onCheckedChange={() => toggleStatus(problem.id)}
+                        className="border-gray-400"
                       />
                     </TableCell>
                     <TableCell>
