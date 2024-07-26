@@ -88,6 +88,16 @@ const Index = () => {
               </Tabs>
             </CardContent>
           </Card>
+          
+          {/* RealFlow Implementation */}
+          <Card className="bg-[#2f3136] border-none mt-4">
+            <CardContent className="p-6">
+              <h2 className="text-xl font-semibold mb-4">RealFlow Visualization</h2>
+              <div className="bg-[#1e1f22] rounded-md p-4 h-64 flex items-center justify-center">
+                <p className="text-gray-400">RealFlow visualization will be implemented here</p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Right Sidebar */}
