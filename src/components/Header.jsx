@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const Header = () => {
   return (
     <header className="sticky top-0 bg-gray-800 text-white z-10 border-b border-gray-700">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4">
             <NavLink to="/" className="flex items-center space-x-2">
