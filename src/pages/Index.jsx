@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactFlow, { Background, Controls } from 'reactflow';
+import ReactFlow, { Background, Controls, MarkerType } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { nodeData, edges } from '../data/nodeData';
 import { Progress } from "@/components/ui/progress";
@@ -38,6 +38,10 @@ const Index = () => {
             defaultEdgeOptions={{
               style: { stroke: 'white' },
               type: 'smoothstep',
+              markerEnd: {
+                type: MarkerType.ArrowClosed,
+                color: 'white',
+              },
             }}
           >
             <Background color="#aaa" gap={16} />
