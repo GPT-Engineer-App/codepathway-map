@@ -110,8 +110,8 @@ export const nodeData = [
 ];
 
 export const edges = [
-  { id: 'e1-2', source: '1', target: '2', type: 'smoothstep' },
-  { id: 'e1-3', source: '1', target: '3', type: 'smoothstep' },
+  { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', animated: true },
+  { id: 'e1-3', source: '1', target: '3', type: 'smoothstep', animated: true },
   { id: 'e2-4', source: '2', target: '4', type: 'smoothstep' },
   { id: 'e2-5', source: '2', target: '5', type: 'smoothstep' },
   { id: 'e3-6', source: '3', target: '6', type: 'smoothstep' },
