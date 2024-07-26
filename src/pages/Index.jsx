@@ -45,7 +45,7 @@ const CustomEdge = ({
       style={{
         ...style,
         strokeWidth: 2,
-        stroke: '#ffffff',
+        stroke: '#000000', // Changed to black for better visibility on white background
       }}
       markerEnd={markerEnd}
     />
@@ -63,10 +63,10 @@ const Index = () => {
       ...edge, 
       type: 'custom',
       animated: true,
-      style: { stroke: '#ffffff', strokeWidth: 2 },
+      style: { stroke: '#000000', strokeWidth: 2 }, // Changed to black
       markerEnd: {
         type: MarkerType.ArrowClosed,
-        color: '#ffffff',
+        color: '#000000', // Changed to black
         width: 20,
         height: 20,
       },
@@ -101,7 +101,7 @@ const Index = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <main className="flex-grow">
-        <div className="bg-gray-900 h-full" style={{ height: 'calc(100vh - 64px)' }}>
+        <div className="bg-white h-full" style={{ height: 'calc(100vh - 64px)' }}> {/* Changed to white background */}
           <ReactFlow 
             nodes={nodes}
             edges={flowEdges}
@@ -112,10 +112,10 @@ const Index = () => {
             defaultEdgeOptions={{
               type: 'custom',
               animated: true,
-              style: { stroke: '#ffffff', strokeWidth: 2 },
+              style: { stroke: '#000000', strokeWidth: 2 }, // Changed to black
               markerEnd: {
                 type: MarkerType.ArrowClosed,
-                color: '#ffffff',
+                color: '#000000', // Changed to black
                 width: 20,
                 height: 20,
               },
