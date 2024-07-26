@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactFlow, { Background, Controls, MarkerType } from 'reactflow';
+import ReactFlow, { 
+  Background, 
+  Controls, 
+  MarkerType,
+  BaseEdge,
+  getStraightPath
+} from 'reactflow';
 import 'reactflow/dist/style.css';
 import { nodeData, edges } from '../data/nodeData';
 import { Progress } from "@/components/ui/progress";
@@ -17,13 +23,44 @@ const nodeTypes = {
   ),
 };
 
+const CustomEdge = ({ 
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  style = {},
+  markerEnd
+}) => {
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  return (
+    <BaseEdge
+      id={id}
+      path={edgePath}
+      style={style}
+      markerEnd={markerEnd}
+    />
+  );
+};
+
+const edgeTypes = {
+  custom: CustomEdge,
+};
+
 const Index = () => {
   const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
+  const [flowEdges, setEdges] = useState(edges.map(edge => ({ ...edge, type: 'custom' })));
   const navigate = useNavigate();
 
-  const onNodeClick = (event, node) => {
+  const onNodeClick = useCallback((event, node) => {
     navigate(`/unit/${node.id}`);
-  };
+  }, [navigate]);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -31,13 +68,14 @@ const Index = () => {
         <div className="bg-gray-900 h-full" style={{ height: 'calc(100vh - 64px)' }}>
           <ReactFlow 
             nodes={nodes}
-            edges={edges}
+            edges={flowEdges}
             onNodeClick={onNodeClick}
             nodeTypes={nodeTypes}
+            edgeTypes={edgeTypes}
             fitView
             defaultEdgeOptions={{
               style: { stroke: '#ffffff', strokeWidth: 3 },
-              type: 'smoothstep',
+              type: 'custom',
               animated: true,
               markerEnd: {
                 type: MarkerType.ArrowClosed,
