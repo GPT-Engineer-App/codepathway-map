@@ -36,13 +36,14 @@ const Index = () => {
             nodeTypes={nodeTypes}
             fitView
             defaultEdgeOptions={{
-              style: { stroke: 'white', strokeWidth: 2 },
+              style: { stroke: '#ffffff', strokeWidth: 3 },
               type: 'smoothstep',
+              animated: true,
               markerEnd: {
                 type: MarkerType.ArrowClosed,
-                color: 'white',
-                width: 20,
-                height: 20,
+                color: '#ffffff',
+                width: 25,
+                height: 25,
               },
             }}
           >
