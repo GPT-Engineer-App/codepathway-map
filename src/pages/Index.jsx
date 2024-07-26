@@ -1,27 +1,32 @@
-import React from 'react';
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ReactFlow from 'reactflow';
+import 'reactflow/dist/style.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { nodeData } from '../data/nodeData';
 
 const Index = () => {
+  const [nodes, setNodes] = useState(nodeData);
+  const navigate = useNavigate();
+
+  const onNodeClick = (event, node) => {
+    navigate(`/unit/${node.id}`);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-[#202225] text-white">
-      <main className="flex-grow flex items-center justify-between px-12 py-16">
-        <div className="max-w-xl">
-          <h1 className="text-6xl font-semibold mb-4 text-[#e1e1e1]">NeetCode</h1>
-          <p className="text-[40px] mb-8 font-semibold text-[#e1e1e1]">A better way to prepare for coding interviews.</p>
-          <Button 
-            className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white transition-colors duration-300 text-xl py-3 px-8 rounded-full"
-            variant="outline"
-            size="lg"
-          >
-            Get Pro
-          </Button>
-        </div>
-        <div className="w-1/2">
-          <div className="bg-gray-800 w-full h-96 rounded-lg flex items-center justify-center">
-            <span className="text-gray-500">Mind Map Placeholder</span>
-          </div>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow relative">
+        <div style={{ width: '100%', height: '80vh' }}>
+          <ReactFlow 
+            nodes={nodes}
+            onNodeClick={onNodeClick}
+            fitView
+          />
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
