@@ -106,7 +106,7 @@ const Index = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <main className="flex-grow">
-        <div className={`bg-${bgColor} h-full`} style={{ height: 'calc(100vh - 64px)' }}>
+        <div style={{ height: 'calc(100vh - 64px)', backgroundColor: bgColor }}>
           <ReactFlow 
             nodes={nodes}
             edges={flowEdges}
@@ -131,7 +131,7 @@ const Index = () => {
           </ReactFlow>
         </div>
       </main>
-      <aside className={`w-80 ${theme === 'light' ? 'bg-[#bdcfe2] text-gray-800' : 'bg-gray-800 text-white'} p-6`}>
+      <aside className={`w-80 ${theme === 'light' ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'} p-6`}>
         <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
         <div className="flex space-x-2 mb-6">
           <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Algorithms</Button>
