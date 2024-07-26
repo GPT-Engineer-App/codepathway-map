@@ -12,7 +12,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4">
             <NavLink to="/" className="flex items-center space-x-2">
-              <img src="/neetcode-logo.png" alt="NeetCode" className="h-8 w-8" />
+              <img src="https://neetcode.io/assets/neetcode-io-logo.png" alt="NeetCode" className="h-8 w-8" />
               <span className="font-bold text-lg">NeetCode</span>
             </NavLink>
             <nav>
