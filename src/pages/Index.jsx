@@ -55,7 +55,24 @@ const edgeTypes = {
 
 const Index = () => {
   const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
-  const [flowEdges, setEdges] = useState(edges.map(edge => ({ ...edge, type: 'custom' })));
+  const [flowEdges, setEdges] = useState([
+    ...edges.map(edge => ({ ...edge, type: 'custom' })),
+    // Add a new edge to demonstrate the connection line
+    {
+      id: 'demo-edge',
+      source: '1', // ID of the source node (Arrays & Hashing)
+      target: '7', // ID of the target node (Trees)
+      type: 'custom',
+      animated: true,
+      style: { stroke: '#FF5733', strokeWidth: 5 }, // Custom style for demonstration
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        color: '#FF5733',
+        width: 30,
+        height: 30,
+      },
+    }
+  ]);
   const [selectedNode, setSelectedNode] = useState(null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
 
