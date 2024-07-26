@@ -11,7 +11,6 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import NodeDetailsSlider from '../components/NodeDetailsSlider';
 import { useTheme } from "@/components/theme-provider";
-import Header from '../components/Header';
 
 const nodeTypes = {
   custom: ({ data }) => (
@@ -105,7 +104,6 @@ const Roadmap = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <Header />
       <div className="flex flex-grow">
         <main className="flex-grow">
           <div style={{ height: 'calc(100vh - 64px)', backgroundColor: bgColor }}>
