@@ -45,7 +45,7 @@ const CustomEdge = ({
       style={{
         ...style,
         strokeWidth: 2,
-        stroke: '#000000', // Changed to black for better visibility on white background
+        stroke: '#000000',
       }}
       markerEnd={markerEnd}
     />
@@ -58,34 +58,20 @@ const edgeTypes = {
 
 const Index = () => {
   const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
-  const [flowEdges, setEdges] = useState([
-    ...edges.map(edge => ({ 
+  const [flowEdges, setEdges] = useState(
+    edges.map(edge => ({ 
       ...edge, 
       type: 'custom',
       animated: true,
-      style: { stroke: '#000000', strokeWidth: 2 }, // Changed to black
+      style: { stroke: '#000000', strokeWidth: 2 },
       markerEnd: {
         type: MarkerType.ArrowClosed,
-        color: '#000000', // Changed to black
+        color: '#000000',
         width: 20,
         height: 20,
       },
-    })),
-    {
-      id: 'demo-edge',
-      source: '1',
-      target: '7',
-      type: 'custom',
-      animated: true,
-      style: { stroke: '#FF5733', strokeWidth: 3 },
-      markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#FF5733',
-        width: 25,
-        height: 25,
-      },
-    }
-  ]);
+    }))
+  );
   const [selectedNode, setSelectedNode] = useState(null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
 
@@ -101,7 +87,7 @@ const Index = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <main className="flex-grow">
-        <div className="bg-white h-full" style={{ height: 'calc(100vh - 64px)' }}> {/* Changed to white background */}
+        <div className="bg-white h-full" style={{ height: 'calc(100vh - 64px)' }}>
           <ReactFlow 
             nodes={nodes}
             edges={flowEdges}
@@ -112,10 +98,10 @@ const Index = () => {
             defaultEdgeOptions={{
               type: 'custom',
               animated: true,
-              style: { stroke: '#000000', strokeWidth: 2 }, // Changed to black
+              style: { stroke: '#000000', strokeWidth: 2 },
               markerEnd: {
                 type: MarkerType.ArrowClosed,
-                color: '#000000', // Changed to black
+                color: '#000000',
                 width: 20,
                 height: 20,
               },
