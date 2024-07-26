@@ -6,7 +6,6 @@ import ReactFlow, {
   getStraightPath
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { nodeData, edges } from '../data/nodeData';
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import NodeDetailsSlider from '../components/NodeDetailsSlider';
@@ -57,36 +56,54 @@ const edgeTypes = {
   custom: CustomEdge,
 };
 
+const initialNodes = [
+  { id: '1', type: 'custom', position: { x: 250, y: 0 }, data: { label: 'Arrays & Hashing', progress: 75 } },
+  { id: '2', type: 'custom', position: { x: 100, y: 100 }, data: { label: 'Two Pointers', progress: 50 } },
+  { id: '3', type: 'custom', position: { x: 400, y: 100 }, data: { label: 'Stack', progress: 25 } },
+  { id: '4', type: 'custom', position: { x: 50, y: 200 }, data: { label: 'Binary Search', progress: 60 } },
+  { id: '5', type: 'custom', position: { x: 250, y: 200 }, data: { label: 'Sliding Window', progress: 40 } },
+  { id: '6', type: 'custom', position: { x: 450, y: 200 }, data: { label: 'Linked List', progress: 30 } },
+  { id: '7', type: 'custom', position: { x: 250, y: 300 }, data: { label: 'Trees', progress: 20 } },
+  { id: '8', type: 'custom', position: { x: 100, y: 400 }, data: { label: 'Tries', progress: 10 } },
+  { id: '9', type: 'custom', position: { x: 250, y: 400 }, data: { label: 'Heap / Priority Queue', progress: 15 } },
+  { id: '10', type: 'custom', position: { x: 400, y: 400 }, data: { label: 'Backtracking', progress: 5 } },
+  { id: '11', type: 'custom', position: { x: 100, y: 500 }, data: { label: 'Graphs', progress: 0 } },
+  { id: '12', type: 'custom', position: { x: 250, y: 500 }, data: { label: '1-D DP', progress: 0 } },
+  { id: '13', type: 'custom', position: { x: 400, y: 500 }, data: { label: 'Intervals', progress: 0 } },
+  { id: '14', type: 'custom', position: { x: 100, y: 600 }, data: { label: 'Greedy', progress: 0 } },
+  { id: '15', type: 'custom', position: { x: 250, y: 600 }, data: { label: 'Advanced Graphs', progress: 0 } },
+  { id: '16', type: 'custom', position: { x: 400, y: 600 }, data: { label: '2-D DP', progress: 0 } },
+  { id: '17', type: 'custom', position: { x: 400, y: 700 }, data: { label: 'Bit Manipulation', progress: 0 } },
+  { id: '18', type: 'custom', position: { x: 250, y: 800 }, data: { label: 'Math & Geometry', progress: 0 } },
+];
+
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', type: 'custom' },
+  { id: 'e1-3', source: '1', target: '3', type: 'custom' },
+  { id: 'e2-4', source: '2', target: '4', type: 'custom' },
+  { id: 'e2-5', source: '2', target: '5', type: 'custom' },
+  { id: 'e3-6', source: '3', target: '6', type: 'custom' },
+  { id: 'e4-7', source: '4', target: '7', type: 'custom' },
+  { id: 'e5-7', source: '5', target: '7', type: 'custom' },
+  { id: 'e6-7', source: '6', target: '7', type: 'custom' },
+  { id: 'e7-8', source: '7', target: '8', type: 'custom' },
+  { id: 'e7-9', source: '7', target: '9', type: 'custom' },
+  { id: 'e7-10', source: '7', target: '10', type: 'custom' },
+  { id: 'e8-11', source: '8', target: '11', type: 'custom' },
+  { id: 'e9-12', source: '9', target: '12', type: 'custom' },
+  { id: 'e10-13', source: '10', target: '13', type: 'custom' },
+  { id: 'e11-14', source: '11', target: '14', type: 'custom' },
+  { id: 'e12-15', source: '12', target: '15', type: 'custom' },
+  { id: 'e13-16', source: '13', target: '16', type: 'custom' },
+  { id: 'e14-17', source: '14', target: '17', type: 'custom' },
+  { id: 'e15-17', source: '15', target: '17', type: 'custom' },
+  { id: 'e16-17', source: '16', target: '17', type: 'custom' },
+  { id: 'e17-18', source: '17', target: '18', type: 'custom' },
+];
+
 const Roadmap = () => {
-  const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
-  const [flowEdges, setEdges] = useState([
-    ...edges.map(edge => ({ 
-      ...edge, 
-      type: 'custom',
-      animated: true,
-      style: { stroke: '#ffffff', strokeWidth: 2 },
-      markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#ffffff',
-        width: 20,
-        height: 20,
-      },
-    })),
-    {
-      id: 'demo-edge',
-      source: '1',
-      target: '7',
-      type: 'custom',
-      animated: true,
-      style: { stroke: '#FF5733', strokeWidth: 3 },
-      markerEnd: {
-        type: MarkerType.ArrowClosed,
-        color: '#FF5733',
-        width: 25,
-        height: 25,
-      },
-    }
-  ]);
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
   const [selectedNode, setSelectedNode] = useState(null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
   const { theme } = useTheme();
@@ -109,14 +126,13 @@ const Roadmap = () => {
           <div style={{ height: 'calc(100vh - 64px)', backgroundColor: bgColor }}>
             <ReactFlow 
               nodes={nodes}
-              edges={flowEdges}
+              edges={edges}
               onNodeClick={onNodeClick}
               nodeTypes={nodeTypes}
               edgeTypes={edgeTypes}
               fitView
               defaultEdgeOptions={{
                 type: 'custom',
-                animated: true,
                 style: { stroke: '#ffffff', strokeWidth: 2 },
                 markerEnd: {
                   type: MarkerType.ArrowClosed,
