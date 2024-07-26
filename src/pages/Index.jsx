@@ -136,7 +136,16 @@ const Index = () => {
           <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
           <div className="flex justify-center space-x-2">
             <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white rounded-full">Algorithms</Button>
-            <Button variant="outline" className={`${theme === 'light' ? 'text-gray-800 border-gray-800' : 'text-white border-white'} hover:bg-gray-700 rounded-full`}>Courses</Button>
+            <Button 
+              variant="ghost" 
+              className={`${
+                theme === 'light' 
+                  ? 'text-gray-800 hover:bg-white hover:text-gray-900' 
+                  : 'text-white hover:bg-gray-800 hover:text-gray-100'
+              } rounded-full border-none`}
+            >
+              Courses
+            </Button>
           </div>
         </div>
         <div className="flex items-center mb-2 justify-center">
