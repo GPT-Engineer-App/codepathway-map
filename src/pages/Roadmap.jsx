@@ -14,7 +14,7 @@ import { useTheme } from "@/components/theme-provider";
 
 const nodeTypes = {
   custom: ({ data }) => (
-    <div className="bg-blue-600 text-white rounded-lg px-4 py-2 shadow-md">
+    <div className="bg-[#3f4bd1] text-white rounded-lg px-4 py-2 shadow-md">
       <div className="font-semibold">{data.label}</div>
       <div className="h-1 bg-white/30 mt-2 rounded-full">
         <div className="h-full bg-green-500 rounded-full" style={{ width: `${data.progress}%` }}></div>
@@ -134,7 +134,7 @@ const Roadmap = () => {
           <div className="mb-6 text-center">
             <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
             <div className="flex justify-center space-x-2">
-              <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white rounded-full">Algorithms</Button>
+              <Button variant="default" className="bg-[#3f4bd1] hover:bg-[#3f4bd1]/80 text-white rounded-full">Algorithms</Button>
               <Button 
                 variant="ghost" 
                 className="text-white hover:bg-gray-700 hover:text-gray-100 rounded-full border-none"
