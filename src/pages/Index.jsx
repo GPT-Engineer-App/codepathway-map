@@ -148,9 +148,11 @@ const Index = () => {
             </Button>
           </div>
         </div>
-        <div className="flex items-center mb-2 justify-center">
-          <div className="text-sm mr-2">(4 / 150)</div>
-          <Progress value={2.67} className="flex-grow h-2 bg-gray-600" indicatorClassName="bg-green-500" />
+        <div className="flex flex-col items-center mb-2">
+          <div className="text-sm mb-1">4 / 150</div>
+          <div className="w-full flex items-center">
+            <Progress value={2.67} className="flex-grow h-2 bg-gray-600" indicatorClassName="bg-green-500" />
+          </div>
         </div>
       </aside>
       <NodeDetailsSlider 
