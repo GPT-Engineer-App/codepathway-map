@@ -75,6 +75,25 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
           <Progress value={(completedProblems / problems.length) * 100} className="w-full bg-gray-700 mt-2" indicatorClassName="bg-blue-500" />
         </SheetHeader>
         
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2">Easy</h3>
+            <p className="text-2xl font-bold">3/5</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2">Medium</h3>
+            <p className="text-2xl font-bold">2/3</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2">Hard</h3>
+            <p className="text-2xl font-bold">0/1</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h3 className="text-lg font-semibold mb-2">Total</h3>
+            <p className="text-2xl font-bold">5/9</p>
+          </div>
+        </div>
+
         <div className="space-y-6">
           <div className="overflow-x-auto">
             <Table>
