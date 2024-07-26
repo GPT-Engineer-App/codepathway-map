@@ -11,9 +11,8 @@ const Header = () => {
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4">
-            <NavLink to="/" className="flex items-center space-x-2">
+            <NavLink to="/" className="flex items-center">
               <img src="https://neetcode.io/assets/neetcode-io-logo.png" alt="NeetCode" className="h-8 w-8" />
-              <span className="font-bold text-lg">NeetCode</span>
             </NavLink>
             <nav>
               <ul className="flex space-x-4">
