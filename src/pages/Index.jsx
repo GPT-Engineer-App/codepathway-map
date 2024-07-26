@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ReactFlow from 'reactflow';
+import 'reactflow/dist/style.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { nodeData } from '../data/nodeData';
 
 const Index = () => {
+  const [nodes, setNodes] = useState(nodeData);
+  const navigate = useNavigate();
+
+  const onNodeClick = (event, node) => {
+    navigate(`/unit/${node.id}`);
+  };
+
   return (
-    <div className="flex justify-center items-center">
-      <div className="text-center">
-        <h1 className="text-3xl">Your Blank Canvas</h1>
-        <p>Chat with the agent to start making edits.</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow relative">
+        <div style={{ width: '100%', height: '80vh' }}>
+          <ReactFlow 
+            nodes={nodes}
+            onNodeClick={onNodeClick}
+            fitView
+          />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };
