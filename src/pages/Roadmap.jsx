@@ -1,14 +1,150 @@
-import React from 'react';
-import { Button } from "@/components/ui/button";
+import { useState, useCallback } from 'react';
+import ReactFlow, { 
+  Controls, 
+  MarkerType,
+  BaseEdge,
+  getStraightPath
+} from 'reactflow';
+import 'reactflow/dist/style.css';
 import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button";
+import NodeDetailsSlider from '../components/NodeDetailsSlider';
+import { useTheme } from "@/components/theme-provider";
+
+const nodeTypes = {
+  custom: ({ data }) => (
+    <div className="bg-[#3f4bd1] text-white rounded-lg px-4 py-2 shadow-md">
+      <div className="font-semibold">{data.label}</div>
+      <div className="h-1 bg-white/30 mt-2 rounded-full">
+        <div className="h-full bg-green-500 rounded-full" style={{ width: `${data.progress}%` }}></div>
+      </div>
+    </div>
+  ),
+};
+
+const CustomEdge = ({ 
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  style = {},
+  markerEnd
+}) => {
+  const [edgePath] = getStraightPath({
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+  });
+
+  return (
+    <BaseEdge
+      id={id}
+      path={edgePath}
+      style={{
+        ...style,
+        strokeWidth: 2,
+        stroke: '#ffffff',
+      }}
+      markerEnd={markerEnd}
+    />
+  );
+};
+
+const edgeTypes = {
+  custom: CustomEdge,
+};
+
+const initialNodes = [
+  { id: '1', type: 'custom', position: { x: 250, y: 0 }, data: { label: 'Arrays & Hashing', progress: 75 } },
+  { id: '2', type: 'custom', position: { x: 100, y: 100 }, data: { label: 'Two Pointers', progress: 50 } },
+  { id: '3', type: 'custom', position: { x: 400, y: 100 }, data: { label: 'Stack', progress: 25 } },
+  { id: '4', type: 'custom', position: { x: 50, y: 200 }, data: { label: 'Binary Search', progress: 60 } },
+  { id: '5', type: 'custom', position: { x: 250, y: 200 }, data: { label: 'Sliding Window', progress: 40 } },
+  { id: '6', type: 'custom', position: { x: 450, y: 200 }, data: { label: 'Linked List', progress: 30 } },
+  { id: '7', type: 'custom', position: { x: 250, y: 300 }, data: { label: 'Trees', progress: 20 } },
+  { id: '8', type: 'custom', position: { x: 100, y: 400 }, data: { label: 'Tries', progress: 10 } },
+  { id: '9', type: 'custom', position: { x: 250, y: 400 }, data: { label: 'Heap / Priority Queue', progress: 15 } },
+  { id: '10', type: 'custom', position: { x: 400, y: 400 }, data: { label: 'Backtracking', progress: 5 } },
+  { id: '11', type: 'custom', position: { x: 100, y: 500 }, data: { label: 'Graphs', progress: 0 } },
+  { id: '12', type: 'custom', position: { x: 250, y: 500 }, data: { label: '1-D DP', progress: 0 } },
+  { id: '13', type: 'custom', position: { x: 400, y: 500 }, data: { label: 'Intervals', progress: 0 } },
+  { id: '14', type: 'custom', position: { x: 100, y: 600 }, data: { label: 'Greedy', progress: 0 } },
+  { id: '15', type: 'custom', position: { x: 250, y: 600 }, data: { label: 'Advanced Graphs', progress: 0 } },
+  { id: '16', type: 'custom', position: { x: 400, y: 600 }, data: { label: '2-D DP', progress: 0 } },
+  { id: '17', type: 'custom', position: { x: 400, y: 700 }, data: { label: 'Bit Manipulation', progress: 0 } },
+  { id: '18', type: 'custom', position: { x: 250, y: 800 }, data: { label: 'Math & Geometry', progress: 0 } },
+];
+
+const initialEdges = [
+  { id: 'e1-2', source: '1', target: '2', type: 'custom' },
+  { id: 'e1-3', source: '1', target: '3', type: 'custom' },
+  { id: 'e2-4', source: '2', target: '4', type: 'custom' },
+  { id: 'e2-5', source: '2', target: '5', type: 'custom' },
+  { id: 'e3-6', source: '3', target: '6', type: 'custom' },
+  { id: 'e4-7', source: '4', target: '7', type: 'custom' },
+  { id: 'e5-7', source: '5', target: '7', type: 'custom' },
+  { id: 'e6-7', source: '6', target: '7', type: 'custom' },
+  { id: 'e7-8', source: '7', target: '8', type: 'custom' },
+  { id: 'e7-9', source: '7', target: '9', type: 'custom' },
+  { id: 'e7-10', source: '7', target: '10', type: 'custom' },
+  { id: 'e8-11', source: '8', target: '11', type: 'custom' },
+  { id: 'e9-12', source: '9', target: '12', type: 'custom' },
+  { id: 'e10-13', source: '10', target: '13', type: 'custom' },
+  { id: 'e11-14', source: '11', target: '14', type: 'custom' },
+  { id: 'e12-15', source: '12', target: '15', type: 'custom' },
+  { id: 'e13-16', source: '13', target: '16', type: 'custom' },
+  { id: 'e14-17', source: '14', target: '17', type: 'custom' },
+  { id: 'e15-17', source: '15', target: '17', type: 'custom' },
+  { id: 'e16-17', source: '16', target: '17', type: 'custom' },
+  { id: 'e17-18', source: '17', target: '18', type: 'custom' },
+];
 
 const Roadmap = () => {
+  const [nodes, setNodes] = useState(initialNodes);
+  const [edges, setEdges] = useState(initialEdges);
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const { theme } = useTheme();
+
+  const onNodeClick = useCallback((event, node) => {
+    setSelectedNode(node);
+    setIsSliderOpen(true);
+  }, []);
+
+  const closeSlider = useCallback(() => {
+    setIsSliderOpen(false);
+  }, []);
+
+  const bgColor = theme === 'light' ? '#bdcfe2' : '#202225';
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <div className="flex flex-grow">
-        <main className="flex-grow p-6">
-          <h1 className="text-3xl font-bold mb-6">Roadmap</h1>
-          <p className="mb-4">Your learning journey visualization will be implemented here.</p>
+        <main className="flex-grow">
+          <div style={{ height: 'calc(100vh - 64px)', backgroundColor: bgColor }}>
+            <ReactFlow 
+              nodes={nodes}
+              edges={edges}
+              onNodeClick={onNodeClick}
+              nodeTypes={nodeTypes}
+              edgeTypes={edgeTypes}
+              fitView
+              defaultEdgeOptions={{
+                type: 'custom',
+                style: { stroke: '#ffffff', strokeWidth: 2 },
+                markerEnd: {
+                  type: MarkerType.ArrowClosed,
+                  color: '#ffffff',
+                  width: 20,
+                  height: 20,
+                },
+              }}
+            >
+              <Controls />
+            </ReactFlow>
+          </div>
         </main>
         <aside className="w-80 bg-[#2f3136] text-white p-6 flex flex-col">
           <div className="mb-6 text-center">
@@ -24,12 +160,17 @@ const Roadmap = () => {
             </div>
           </div>
           <div className="flex flex-col items-center mb-2">
-            <div className="text-sm mb-1 font-bold">[0 / 150]</div>
+            <div className="text-sm mb-1 font-bold">[4 / 150]</div>
             <div className="w-full flex items-center">
-              <Progress value={0} className="flex-grow h-2 bg-gray-600" />
+              <Progress value={2.67} className="flex-grow h-2 bg-gray-600" />
             </div>
           </div>
         </aside>
+        <NodeDetailsSlider 
+          isOpen={isSliderOpen}
+          onClose={closeSlider}
+          nodeData={selectedNode?.data}
+        />
       </div>
     </div>
   );
