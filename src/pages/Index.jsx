@@ -11,6 +11,7 @@ import { nodeData, edges } from '../data/nodeData';
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import NodeDetailsSlider from '../components/NodeDetailsSlider';
+import { useTheme } from "@/components/theme-provider";
 
 const nodeTypes = {
   custom: ({ data }) => (
@@ -89,6 +90,7 @@ const Index = () => {
   ]);
   const [selectedNode, setSelectedNode] = useState(null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const { theme } = useTheme();
 
   const onNodeClick = useCallback((event, node) => {
     setSelectedNode(node);
@@ -99,10 +101,12 @@ const Index = () => {
     setIsSliderOpen(false);
   }, []);
 
+  const bgColor = theme === 'light' ? '#bdcfe2' : 'gray-900';
+
   return (
     <div className="flex min-h-screen bg-gray-100">
       <main className="flex-grow">
-        <div className="bg-gray-900 h-full" style={{ height: 'calc(100vh - 64px)' }}>
+        <div className={`bg-${bgColor} h-full`} style={{ height: 'calc(100vh - 64px)' }}>
           <ReactFlow 
             nodes={nodes}
             edges={flowEdges}
@@ -127,11 +131,11 @@ const Index = () => {
           </ReactFlow>
         </div>
       </main>
-      <aside className="w-80 bg-gray-800 p-6 text-white">
+      <aside className={`w-80 ${theme === 'light' ? 'bg-[#bdcfe2] text-gray-800' : 'bg-gray-800 text-white'} p-6`}>
         <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
         <div className="flex space-x-2 mb-6">
-          <Button variant="default" className="bg-blue-500 hover:bg-blue-600">Algorithms</Button>
-          <Button variant="outline" className="text-white border-white hover:bg-gray-700">Courses</Button>
+          <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Algorithms</Button>
+          <Button variant="outline" className={`${theme === 'light' ? 'text-gray-800 border-gray-800' : 'text-white border-white'} hover:bg-gray-700`}>Courses</Button>
         </div>
         <div className="mb-2 text-sm">(0 / 150)</div>
         <Progress value={0} className="w-full bg-gray-600" indicatorClassName="bg-green-500" />
