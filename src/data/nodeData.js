@@ -2,7 +2,7 @@ export const nodeData = [
   {
     id: '1',
     type: 'input',
-    position: { x: 250, y: 0 },
+    position: { x: 250, y: 5 },
     data: { label: 'Arrays & Hashing', progress: 75 }
   },
   {
@@ -20,37 +20,37 @@ export const nodeData = [
   {
     id: '4',
     type: 'default',
-    position: { x: 0, y: 200 },
+    position: { x: 50, y: 200 },
     data: { label: 'Binary Search', progress: 60 }
   },
   {
     id: '5',
     type: 'default',
-    position: { x: 200, y: 200 },
+    position: { x: 250, y: 200 },
     data: { label: 'Sliding Window', progress: 40 }
   },
   {
     id: '6',
     type: 'default',
-    position: { x: 400, y: 200 },
+    position: { x: 450, y: 200 },
     data: { label: 'Linked List', progress: 30 }
   },
   {
     id: '7',
     type: 'default',
-    position: { x: 200, y: 300 },
+    position: { x: 250, y: 300 },
     data: { label: 'Trees', progress: 20 }
   },
   {
     id: '8',
     type: 'default',
-    position: { x: 0, y: 400 },
+    position: { x: 100, y: 400 },
     data: { label: 'Tries', progress: 10 }
   },
   {
     id: '9',
     type: 'default',
-    position: { x: 200, y: 400 },
+    position: { x: 250, y: 400 },
     data: { label: 'Heap / Priority Queue', progress: 15 }
   },
   {
@@ -62,13 +62,13 @@ export const nodeData = [
   {
     id: '11',
     type: 'default',
-    position: { x: 0, y: 500 },
+    position: { x: 100, y: 500 },
     data: { label: 'Graphs', progress: 0 }
   },
   {
     id: '12',
     type: 'default',
-    position: { x: 200, y: 500 },
+    position: { x: 250, y: 500 },
     data: { label: '1-D DP', progress: 0 }
   },
   {
@@ -80,13 +80,13 @@ export const nodeData = [
   {
     id: '14',
     type: 'default',
-    position: { x: 0, y: 600 },
+    position: { x: 100, y: 600 },
     data: { label: 'Greedy', progress: 0 }
   },
   {
     id: '15',
     type: 'default',
-    position: { x: 200, y: 600 },
+    position: { x: 250, y: 600 },
     data: { label: 'Advanced Graphs', progress: 0 }
   },
   {
@@ -98,13 +98,13 @@ export const nodeData = [
   {
     id: '17',
     type: 'default',
-    position: { x: 200, y: 700 },
+    position: { x: 400, y: 700 },
     data: { label: 'Bit Manipulation', progress: 0 }
   },
   {
     id: '18',
     type: 'output',
-    position: { x: 200, y: 800 },
+    position: { x: 250, y: 800 },
     data: { label: 'Math & Geometry', progress: 0 }
   },
 ];
@@ -114,7 +114,6 @@ export const edges = [
   { id: 'e1-3', source: '1', target: '3', type: 'smoothstep', animated: true },
   { id: 'e2-4', source: '2', target: '4', type: 'smoothstep' },
   { id: 'e2-5', source: '2', target: '5', type: 'smoothstep' },
-  { id: 'e3-5', source: '3', target: '5', type: 'smoothstep' },
   { id: 'e3-6', source: '3', target: '6', type: 'smoothstep' },
   { id: 'e4-7', source: '4', target: '7', type: 'smoothstep' },
   { id: 'e5-7', source: '5', target: '7', type: 'smoothstep' },
@@ -122,17 +121,12 @@ export const edges = [
   { id: 'e7-8', source: '7', target: '8', type: 'smoothstep' },
   { id: 'e7-9', source: '7', target: '9', type: 'smoothstep' },
   { id: 'e7-10', source: '7', target: '10', type: 'smoothstep' },
-  { id: 'e8-11', source: '8', target: '11', type: 'smoothstep' },
-  { id: 'e9-11', source: '9', target: '11', type: 'smoothstep' },
-  { id: 'e9-12', source: '9', target: '12', type: 'smoothstep' },
+  { id: 'e10-11', source: '10', target: '11', type: 'smoothstep' },
   { id: 'e10-12', source: '10', target: '12', type: 'smoothstep' },
-  { id: 'e10-13', source: '10', target: '13', type: 'smoothstep' },
-  { id: 'e11-14', source: '11', target: '14', type: 'smoothstep' },
+  { id: 'e9-13', source: '9', target: '13', type: 'smoothstep' },
+  { id: 'e9-14', source: '9', target: '14', type: 'smoothstep' },
   { id: 'e11-15', source: '11', target: '15', type: 'smoothstep' },
-  { id: 'e12-15', source: '12', target: '15', type: 'smoothstep' },
   { id: 'e12-16', source: '12', target: '16', type: 'smoothstep' },
-  { id: 'e13-16', source: '13', target: '16', type: 'smoothstep' },
-  { id: 'e14-17', source: '14', target: '17', type: 'smoothstep' },
   { id: 'e15-17', source: '15', target: '17', type: 'smoothstep' },
   { id: 'e16-17', source: '16', target: '17', type: 'smoothstep' },
   { id: 'e17-18', source: '17', target: '18', type: 'smoothstep' },
