@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, Flame } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useTheme } from "./theme-provider";
 
@@ -23,8 +23,8 @@ const Header = () => {
             </nav>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 border-none">
-              Pro
+            <Button variant="default" size="sm" className="bg-green-800 text-white hover:bg-green-700 border-none">
+              <Flame className="h-4 w-4 mr-2" /> Pro
             </Button>
             <Button
               variant="ghost"
@@ -34,7 +34,7 @@ const Header = () => {
             >
               {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
             </Button>
-            <Button variant="outline" size="sm" className="bg-secondary text-secondary-foreground hover:bg-secondary/80">
+            <Button variant="default" size="sm" className="bg-blue-600 text-white hover:bg-blue-500">
               Sign in
             </Button>
           </div>
