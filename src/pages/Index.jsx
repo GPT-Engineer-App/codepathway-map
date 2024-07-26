@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import ReactFlow, { 
+  Background, 
   Controls, 
   MarkerType,
   BaseEdge,
@@ -101,7 +102,7 @@ const Index = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <main className="flex-grow">
-        <div className="bg-gray-200 h-full" style={{ height: 'calc(100vh - 64px)' }}>
+        <div className="bg-gray-900 h-full" style={{ height: 'calc(100vh - 64px)' }}>
           <ReactFlow 
             nodes={nodes}
             edges={flowEdges}
@@ -112,15 +113,16 @@ const Index = () => {
             defaultEdgeOptions={{
               type: 'custom',
               animated: true,
-              style: { stroke: '#333333', strokeWidth: 2 },
+              style: { stroke: '#ffffff', strokeWidth: 2 },
               markerEnd: {
                 type: MarkerType.ArrowClosed,
-                color: '#333333',
+                color: '#ffffff',
                 width: 20,
                 height: 20,
               },
             }}
           >
+            <Background color="#aaa" gap={16} />
             <Controls />
           </ReactFlow>
         </div>
