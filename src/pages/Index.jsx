@@ -64,26 +64,14 @@ const Index = () => {
           </Card>
         </div>
       </main>
-      <aside className="w-80 bg-white p-6 border-l">
-        <h2 className="text-xl font-semibold mb-4">Your Progress</h2>
-        <div className="space-y-4">
-          <div>
-            <h3 className="font-medium mb-2">Overall Completion</h3>
-            <Progress value={33} className="w-full" />
-          </div>
-          <div>
-            <h3 className="font-medium mb-2">Current Course</h3>
-            <p className="text-sm text-gray-600 mb-2">Data Structures & Algorithms</p>
-            <Progress value={75} className="w-full" />
-          </div>
-          <div>
-            <h3 className="font-medium mb-2">Next Milestone</h3>
-            <p className="text-sm text-gray-600">Complete Binary Trees module</p>
-          </div>
+      <aside className="w-80 bg-gray-800 p-6 text-white">
+        <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
+        <div className="flex space-x-2 mb-6">
+          <Button variant="default" className="bg-blue-500 hover:bg-blue-600">Algorithms</Button>
+          <Button variant="outline" className="text-white border-white hover:bg-gray-700">Courses</Button>
         </div>
-        <Button className="w-full mt-6">
-          <Rocket className="mr-2 h-4 w-4" /> Continue Learning
-        </Button>
+        <div className="mb-2 text-sm">(0 / 150)</div>
+        <Progress value={0} className="w-full bg-gray-600" indicatorClassName="bg-white" />
       </aside>
     </div>
   );
