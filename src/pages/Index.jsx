@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ReactFlow, { 
   Background, 
   Controls, 
@@ -11,6 +10,7 @@ import 'reactflow/dist/style.css';
 import { nodeData, edges } from '../data/nodeData';
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import NodeDetailsSlider from '../components/NodeDetailsSlider';
 
 const nodeTypes = {
   custom: ({ data }) => (
@@ -56,11 +56,17 @@ const edgeTypes = {
 const Index = () => {
   const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
   const [flowEdges, setEdges] = useState(edges.map(edge => ({ ...edge, type: 'custom' })));
-  const navigate = useNavigate();
+  const [selectedNode, setSelectedNode] = useState(null);
+  const [isSliderOpen, setIsSliderOpen] = useState(false);
 
   const onNodeClick = useCallback((event, node) => {
-    navigate(`/unit/${node.id}`);
-  }, [navigate]);
+    setSelectedNode(node);
+    setIsSliderOpen(true);
+  }, []);
+
+  const closeSlider = useCallback(() => {
+    setIsSliderOpen(false);
+  }, []);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -99,6 +105,11 @@ const Index = () => {
         <div className="mb-2 text-sm">(0 / 150)</div>
         <Progress value={0} className="w-full bg-gray-600" indicatorClassName="bg-white" />
       </aside>
+      <NodeDetailsSlider 
+        isOpen={isSliderOpen}
+        onClose={closeSlider}
+        nodeData={selectedNode?.data}
+      />
     </div>
   );
 };
