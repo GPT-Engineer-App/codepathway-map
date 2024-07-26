@@ -149,9 +149,9 @@ const Index = () => {
           </div>
         </div>
         <div className="flex flex-col items-center mb-2">
-          <div className="text-sm mb-1">4 / 150</div>
+          <div className="text-sm mb-1 font-bold">[4 / 150]</div>
           <div className="w-full flex items-center">
-            <Progress value={2.67} className="flex-grow h-2 bg-gray-600" indicatorClassName="bg-green-500" />
+            <Progress value={2.67} className="flex-grow h-2 bg-gray-600" />
           </div>
         </div>
       </aside>
