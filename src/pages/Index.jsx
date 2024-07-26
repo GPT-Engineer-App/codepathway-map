@@ -101,7 +101,7 @@ const Index = () => {
     setIsSliderOpen(false);
   }, []);
 
-  const bgColor = theme === 'light' ? '#bdcfe2' : 'gray-900';
+  const bgColor = theme === 'light' ? '#bdcfe2' : '#202225';
 
   return (
     <div className="flex min-h-screen bg-gray-100">
