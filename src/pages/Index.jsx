@@ -131,14 +131,18 @@ const Index = () => {
           </ReactFlow>
         </div>
       </main>
-      <aside className={`w-80 ${theme === 'light' ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'} p-6`}>
-        <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
-        <div className="flex space-x-2 mb-6">
-          <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white">Algorithms</Button>
-          <Button variant="outline" className={`${theme === 'light' ? 'text-gray-800 border-gray-800' : 'text-white border-white'} hover:bg-gray-700`}>Courses</Button>
+      <aside className={`w-80 ${theme === 'light' ? 'bg-white text-gray-800' : 'bg-gray-800 text-white'} p-6 flex flex-col`}>
+        <div className="mb-6">
+          <h2 className="text-xl font-semibold mb-4">Select Roadmap</h2>
+          <div className="flex space-x-2">
+            <Button variant="default" className="bg-blue-500 hover:bg-blue-600 text-white rounded-full">Algorithms</Button>
+            <Button variant="outline" className={`${theme === 'light' ? 'text-gray-800 border-gray-800' : 'text-white border-white'} hover:bg-gray-700 rounded-full`}>Courses</Button>
+          </div>
         </div>
-        <div className="mb-2 text-sm">(0 / 150)</div>
-        <Progress value={0} className="w-full bg-gray-600" indicatorClassName="bg-green-500" />
+        <div className="flex items-center mb-2">
+          <div className="text-sm mr-2">(4 / 150)</div>
+          <Progress value={2.67} className="flex-grow h-2 bg-gray-600" indicatorClassName="bg-green-500" />
+        </div>
       </aside>
       <NodeDetailsSlider 
         isOpen={isSliderOpen}
