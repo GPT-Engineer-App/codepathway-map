@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { X } from "lucide-react";
@@ -7,19 +7,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Star } from "lucide-react";
 
 const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
-  useEffect(() => {
-    const handleEsc = (event) => {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleEsc);
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-    };
-  }, [onClose]);
-
   if (!nodeData) return null;
 
   const prerequisites = [
@@ -45,26 +32,24 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-4/5 max-w-4xl sm:max-w-full bg-gray-900 text-white overflow-y-auto">
         <SheetHeader className="mb-6">
-          <SheetTitle className="text-2xl font-bold text-white flex justify-between items-center">
+          <SheetTitle className="text-2xl font-bold text-white text-center">
             {nodeData.label}
-            <Button variant="ghost" size="icon" onClick={onClose} className="text-white">
-              <X className="h-6 w-6" />
-            </Button>
           </SheetTitle>
-          <Progress value={0} className="w-full bg-gray-700" indicatorClassName="bg-blue-500" />
-          <div className="text-sm text-gray-400 mt-2">
+          <div className="text-sm text-gray-400 text-center mt-2">
             (0 / 9)
           </div>
+          <Progress value={0} className="w-full bg-gray-700 mt-2" indicatorClassName="bg-blue-500" />
         </SheetHeader>
         
         <div className="space-y-6">
           <div>
             <h3 className="text-lg font-semibold mb-2">Prerequisites</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-4 gap-4">
               {prerequisites.map((prereq, index) => (
                 <div key={index} className="bg-gray-800 p-3 rounded-lg">
                   <h4 className="font-semibold mb-1">{prereq.title}</h4>
                   <p className="text-xs text-gray-400">{prereq.course}</p>
+                  <input type="checkbox" className="mt-2" />
                 </div>
               ))}
             </div>
