@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Progress } from "@/components/ui/progress";
 import { X, ChevronUp, ChevronDown, Star, ExternalLink } from "lucide-react";
@@ -61,6 +61,7 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
   };
 
   const completedProblems = problems.filter(p => p.status).length;
+  const progressPercentage = (completedProblems / problems.length) * 100;
 
   const prerequisites = [
     { title: "Dynamic Arrays", subtitle: "Data Structures & Algorithms for Beginners" },
@@ -79,7 +80,11 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
           <div className="text-sm text-gray-400 text-center mt-2">
             ({completedProblems} / {problems.length})
           </div>
-          <Progress value={(completedProblems / problems.length) * 100} className="w-full bg-gray-700 mt-2" indicatorClassName="bg-blue-500" />
+          <Progress 
+            value={progressPercentage} 
+            className="w-full h-3 bg-gray-700 mt-2" 
+            indicatorClassName="bg-green-500" 
+          />
         </SheetHeader>
         
         <div className="mb-6">
