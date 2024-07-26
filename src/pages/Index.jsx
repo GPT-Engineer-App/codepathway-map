@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReactFlow from 'reactflow';
+import ReactFlow, { Background, Controls } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { nodeData, edges } from '../data/nodeData';
 import { Progress } from "@/components/ui/progress";
@@ -39,7 +39,10 @@ const Index = () => {
               style: { stroke: 'white' },
               type: 'smoothstep',
             }}
-          />
+          >
+            <Background color="#aaa" gap={16} />
+            <Controls />
+          </ReactFlow>
         </div>
       </main>
       <aside className="w-80 bg-gray-800 p-6 text-white">
