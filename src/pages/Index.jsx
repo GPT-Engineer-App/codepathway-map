@@ -45,7 +45,7 @@ const CustomEdge = ({
       style={{
         ...style,
         strokeWidth: 2,
-        stroke: '#000000',
+        stroke: '#ffffff',
       }}
       markerEnd={markerEnd}
     />
@@ -58,20 +58,34 @@ const edgeTypes = {
 
 const Index = () => {
   const [nodes, setNodes] = useState(nodeData.map(node => ({ ...node, type: 'custom' })));
-  const [flowEdges, setEdges] = useState(
-    edges.map(edge => ({ 
+  const [flowEdges, setEdges] = useState([
+    ...edges.map(edge => ({ 
       ...edge, 
       type: 'custom',
       animated: true,
-      style: { stroke: '#000000', strokeWidth: 2 },
+      style: { stroke: '#ffffff', strokeWidth: 2 },
       markerEnd: {
         type: MarkerType.ArrowClosed,
-        color: '#000000',
+        color: '#ffffff',
         width: 20,
         height: 20,
       },
-    }))
-  );
+    })),
+    {
+      id: 'demo-edge',
+      source: '1',
+      target: '7',
+      type: 'custom',
+      animated: true,
+      style: { stroke: '#FF5733', strokeWidth: 3 },
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        color: '#FF5733',
+        width: 25,
+        height: 25,
+      },
+    }
+  ]);
   const [selectedNode, setSelectedNode] = useState(null);
   const [isSliderOpen, setIsSliderOpen] = useState(false);
 
@@ -87,7 +101,7 @@ const Index = () => {
   return (
     <div className="flex min-h-screen bg-gray-100">
       <main className="flex-grow">
-        <div className="bg-white h-full" style={{ height: 'calc(100vh - 64px)' }}>
+        <div className="bg-gray-900 h-full" style={{ height: 'calc(100vh - 64px)' }}>
           <ReactFlow 
             nodes={nodes}
             edges={flowEdges}
@@ -98,10 +112,10 @@ const Index = () => {
             defaultEdgeOptions={{
               type: 'custom',
               animated: true,
-              style: { stroke: '#000000', strokeWidth: 2 },
+              style: { stroke: '#ffffff', strokeWidth: 2 },
               markerEnd: {
                 type: MarkerType.ArrowClosed,
-                color: '#000000',
+                color: '#ffffff',
                 width: 20,
                 height: 20,
               },
