@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import ReactFlow, { 
-  Background, 
   Controls, 
   MarkerType,
   BaseEdge,
@@ -126,7 +125,6 @@ const Index = () => {
               },
             }}
           >
-            <Background color="#aaa" gap={16} />
             <Controls />
           </ReactFlow>
         </div>
