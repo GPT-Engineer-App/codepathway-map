@@ -83,7 +83,7 @@ const NodeDetailsSlider = ({ isOpen, onClose, nodeData }) => {
           <Progress 
             value={progressPercentage} 
             className="w-full h-3 bg-gray-700 mt-2" 
-            indicatorClassName="bg-green-500" 
+            style={{ '--progress-background': '#22c55e' }}
           />
         </SheetHeader>
         
