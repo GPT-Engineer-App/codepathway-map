@@ -6,8 +6,8 @@ const Index = () => {
     <div className="flex flex-col min-h-screen bg-[#202225] text-white">
       <main className="flex-grow flex items-center justify-between px-12 py-16">
         <div className="max-w-xl">
-          <h1 className="text-6xl font-bold mb-4">NeetCode</h1>
-          <p className="text-[40px] mb-8">A better way to prepare for coding interviews.</p>
+          <h1 className="text-6xl font-extrabold mb-4 text-[#e1e1e1]">NeetCode</h1>
+          <p className="text-[40px] mb-8 font-extrabold text-[#e1e1e1]">A better way to prepare for coding interviews.</p>
           <Button 
             className="text-green-500 border-green-500 hover:bg-green-500 hover:text-white transition-colors duration-300 text-xl py-3 px-8 rounded-full"
             variant="outline"
